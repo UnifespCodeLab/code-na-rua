@@ -9,7 +9,23 @@ export class VantagensService {
   }
 
   findAll() {
-    return `This action returns all vantagens`;
+    return [
+      {
+        id: 0,
+        nome: 'Parceiro 1',
+        categoria: 'Categoria A',
+        endereco: 'Endereco 1',
+        localizacao: { latitude: -12.34, longitude: -45.67 },
+        beneficios: [
+          {
+            id: 1,
+            descricao: 'Beneficio 1',
+            // shortcut: resumo fixo no mock, calcular a partir das notas quando houver envio de avaliações.
+            avaliacao: { media: 4.5, quantidade: 2 },
+          },
+        ],
+      },
+    ];
   }
 
   findOne(id: number) {

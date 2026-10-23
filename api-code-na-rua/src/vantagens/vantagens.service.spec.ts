@@ -43,4 +43,15 @@ describe('VantagensService', () => {
       );
     }
   })
+
+  it('returns a rating summary for the mock benefit', () => {
+    const beneficio = service.findAll()[0].beneficios[0];
+
+    expect(typeof beneficio.avaliacao.media).toBe('number');
+    expect(typeof beneficio.avaliacao.quantidade).toBe('number');
+    expect(beneficio.avaliacao.media).toBeGreaterThanOrEqual(1);
+    expect(beneficio.avaliacao.media).toBeLessThanOrEqual(5);
+    expect(Number.isInteger(beneficio.avaliacao.quantidade)).toBe(true);
+    expect(beneficio.avaliacao.quantidade).toBeGreaterThan(0);
+  });
 });
