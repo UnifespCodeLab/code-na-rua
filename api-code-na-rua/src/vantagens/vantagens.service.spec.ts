@@ -54,4 +54,17 @@ describe('VantagensService', () => {
     expect(Number.isInteger(beneficio.avaliacao.quantidade)).toBe(true);
     expect(beneficio.avaliacao.quantidade).toBeGreaterThan(0);
   });
+
+  it('returns unique benefits for each partner', () => {
+    const parceiros = service.findAll();
+    const ids = parceiros.flatMap((parceiro) => 
+      parceiro.beneficios.map((beneficio) => beneficio.id)
+    );
+    
+    // Ao extrairmos todos os ids de todos os parceiros, comparamos a lista obtida
+    // com um set desses ids. Dessa forma, se ambas estruturas possuirem exatamente
+    // o mesmo tamanho, sabemos que nao ha repeticoes de ids, uma vez que um set
+    // nao possui valores repetidos.
+    expect(new Set(ids).size).toBe(ids.length);
+  });
 });
