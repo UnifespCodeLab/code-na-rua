@@ -20,7 +20,7 @@ describe('VantagensService', () => {
     const parceiros = service.findAll();
 
     expect(Array.isArray(parceiros)).toBe(true); // retorna lista
-    expect(parceiros.length).toBeGreaterThen(0); // lista nao vazia
+    expect(parceiros.length).toBeGreaterThan(0); // lista nao vazia
 
     for (const parceiro of parceiros) {          // dados com tipo correto
       expect(parceiro).toEqual(
