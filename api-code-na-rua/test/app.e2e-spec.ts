@@ -22,4 +22,21 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  // Clube de vantagens ========================================================
+  it('/vantagens (GET)', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/vantagens')
+      .expect(200);
+
+    expect(response.body).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          nome: expect.any(String),
+          beneficios: expect.any(Array),
+        })
+      ])
+    );
+  });
+  // ===========================================================================
 });

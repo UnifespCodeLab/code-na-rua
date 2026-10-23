@@ -1,15 +1,15 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { VantagensService } from './vantagens.service';
-import { CreateVantagenDto } from './dto/create-vantagen.dto';
-import { UpdateVantagenDto } from './dto/update-vantagen.dto';
+import { CreateVantagemDto } from './dto/create-vantagem.dto';
+import { UpdateVantagemDto } from './dto/update-vantagem.dto';
 
 @Controller('vantagens')
 export class VantagensController {
   constructor(private readonly vantagensService: VantagensService) {}
 
   @Post()
-  create(@Body() createVantagenDto: CreateVantagenDto) {
-    return this.vantagensService.create(createVantagenDto);
+  create(@Body() createVantagemDto: CreateVantagemDto) {
+    return this.vantagensService.create(createVantagemDto);
   }
 
   @Get()
@@ -23,8 +23,8 @@ export class VantagensController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVantagenDto: UpdateVantagenDto) {
-    return this.vantagensService.update(+id, updateVantagenDto);
+  update(@Param('id') id: string, @Body() updateVantagemDto: UpdateVantagemDto) {
+    return this.vantagensService.update(+id, updateVantagemDto);
   }
 
   @Delete(':id')
