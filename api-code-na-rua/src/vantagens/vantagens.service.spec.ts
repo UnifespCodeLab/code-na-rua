@@ -28,11 +28,16 @@ describe('VantagensService', () => {
           id: expect.any(Number),
           nome: expect.any(String),
           categoria: expect.any(String),
+          descricao: expect.any(String),
           endereco: expect.any(String),
           localizacao: expect.objectContaining({ 
             latitude: expect.any(Number), 
             longitude: expect.any(Number), 
           }),
+          avaliacao: expect.objectContaining({
+            media: expect.any(Number),
+            quantidade: expect.any(Number)
+          })
           beneficios: expect.arrayContaining([
             expect.objectContaining({
               id: expect.any(Number),
@@ -44,15 +49,23 @@ describe('VantagensService', () => {
     }
   })
 
-  it('returns a rating summary for the mock benefit', () => {
-    const beneficio = service.findAll()[0].beneficios[0];
+  it('returns a rating summary for each mock partner', () => {
+    for (const parceiro of service.findAll()) {
+      expect(typeof parceiro.avaliacao.media).toBe('number');
+      expect(typeof parceiro.avaliacao.quantidade).toBe('number');
+      expect(parceiro.avaliacao.media).toBeGreaterThanOrEqual(1);
+      expect(parceiro.avaliacao.media).toBeLessThanOrEqual(5);
+      expect(Number.isInteger(parceiro.avaliacao.quantidade)).toBe(true);
+      expect(parceiro.avaliacao.quantidade).toBeGreaterThan(0);
+    }
+  });
 
-    expect(typeof beneficio.avaliacao.media).toBe('number');
-    expect(typeof beneficio.avaliacao.quantidade).toBe('number');
-    expect(beneficio.avaliacao.media).toBeGreaterThanOrEqual(1);
-    expect(beneficio.avaliacao.media).toBeLessThanOrEqual(5);
-    expect(Number.isInteger(beneficio.avaliacao.quantidade)).toBe(true);
-    expect(beneficio.avaliacao.quantidade).toBeGreaterThan(0);
+  it('each partner description should have less then 100 characters', () => {
+    for(const parceiro of service.findAll()) {
+      const descricao = parceiro.descricao;
+      expect(typeof descricao).toBe('string');
+      expect(descricao.length).toBeLessThanOrEqual(100);
+    }
   });
 
   it('returns unique benefits for each partner', () => {
