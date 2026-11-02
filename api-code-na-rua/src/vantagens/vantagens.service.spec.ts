@@ -37,7 +37,7 @@ describe('VantagensService', () => {
           avaliacao: expect.objectContaining({
             media: expect.any(Number),
             quantidade: expect.any(Number)
-          })
+          }),
           beneficios: expect.arrayContaining([
             expect.objectContaining({
               id: expect.any(Number),
