@@ -44,13 +44,13 @@ export function ReviewCard({ item }: { item: Estabelecimento }) {
         </div>
       </div>
 
-      <dl className="grid grid-cols-2 gap-x-4 gap-y-2 border-t border-border-default pt-4">
+      <dl className="flex flex-col gap-2 border-t border-border-default pt-4">
         {CRITERIOS.map((c) => (
-          <div key={c.id} className="flex items-center justify-between gap-2">
-            <dt className="text-sm text-text-secondary">{c.rotulo}</dt>
-            <dd className="flex items-center gap-1.5">
+          <div key={c.id} className="flex items-center justify-between gap-3">
+            <dt className="min-w-0 truncate text-sm text-text-secondary">{c.rotulo}</dt>
+            <dd className="flex shrink-0 items-center gap-1.5">
               <StarRatingDisplay value={item.mediaPorCriterio[c.id]} size="sm" />
-              <span className="text-sm font-semibold tabular-nums text-text-primary">
+              <span className="w-7 text-right text-sm font-semibold tabular-nums text-text-primary">
                 {item.mediaPorCriterio[c.id].toFixed(1)}
               </span>
             </dd>
