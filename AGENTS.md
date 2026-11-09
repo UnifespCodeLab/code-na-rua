@@ -20,7 +20,24 @@ A UNIFESP é a instituição acadêmica responsável pelo projeto.
 
 ---
 
-## 2. Identidade do produto
+## 2. Estrutura do projeto
+
+O projeto MotoLab é composto por dois subprojetos principais:
+
+- `api-code-na-rua`: API backend da plataforma, desenvolvida com NestJS e
+  TypeScript;
+- `web-code-na-rua`: aplicação web frontend da plataforma, desenvolvida com
+  Next.js, React e TypeScript.
+
+Alterações que envolvam integração entre frontend e backend devem considerar
+os contratos, tipos e comportamentos dos dois subprojetos.
+
+As instruções adicionais existentes dentro de cada subprojeto também devem ser
+respeitadas ao modificar arquivos no respectivo diretório.
+
+---
+
+## 3. Identidade do produto
 
 Nome: MotoLab
 
@@ -44,7 +61,7 @@ associadas ao projeto, e não como parte do nome do produto.
 
 ---
 
-## 3. Escopo da primeira versão do protótipo
+## 4. Escopo da primeira versão do protótipo
 
 A primeira versão do protótipo contempla SOMENTE as seguintes funcionalidades:
 
@@ -59,7 +76,7 @@ NÃO implementar funcionalidades futuras sem solicitação explícita.
 
 ---
 
-## 4. Funcionalidades fora do escopo atual
+## 5. Funcionalidades fora do escopo atual
 
 As seguintes funcionalidades NÃO fazem parte da primeira versão:
 
@@ -80,7 +97,7 @@ explicitamente retirada da primeira versão do protótipo.
 
 ---
 
-## 5. Home
+## 6. Home
 
 A tela principal deve apresentar as quatro funcionalidades da primeira
 versão:
@@ -97,7 +114,7 @@ A funcionalidade de emergência deve possuir destaque visual superior
 
 ---
 
-## 6. Princípios de UX
+## 7. Princípios de UX
 
 A interface deve priorizar:
 
@@ -119,7 +136,7 @@ Evitar interfaces excessivamente complexas.
 
 ---
 
-## 7. Emergência
+## 8. Emergência
 
 US05 é uma funcionalidade crítica.
 
@@ -137,7 +154,7 @@ pois isso reduz sua associação com situações críticas.
 
 ---
 
-## 8. Avaliação de estabelecimentos
+## 9. Avaliação de estabelecimentos
 
 US10 deve permitir que o motoboy avalie sua experiência em
 estabelecimentos parceiros.
@@ -155,7 +172,7 @@ A interface deve apresentar os critérios de forma clara e simples.
 
 ---
 
-## 9. Clube de vantagens
+## 10. Clube de vantagens
 
 US04 deve permitir:
 
@@ -170,7 +187,7 @@ A interface deve priorizar descoberta rápida dos benefícios.
 
 ---
 
-## 10. Panes e acidentes
+## 11. Panes e acidentes
 
 US06 deve permitir:
 
@@ -186,7 +203,7 @@ A funcionalidade deve diferenciar claramente pane mecânica de acidente.
 
 ---
 
-## 11. Design system
+## 12. Design system
 
 O design deve seguir a identidade visual do MotoLab.
 
@@ -219,7 +236,7 @@ Priorizar:
 
 ---
 
-## 12. Arquitetura
+## 13. Arquitetura
 
 Antes de criar novos componentes, verificar os componentes existentes
 no projeto.
@@ -228,6 +245,11 @@ Evitar duplicação.
 
 Preferir componentes reutilizáveis.
 
+Todos os componentes do frontend devem ser criados e mantidos em
+`web-code-na-rua/components`. As páginas e demais módulos do frontend devem
+importá-los a partir dessa pasta, preferencialmente por meio do alias
+`@/components` configurado no projeto Next.js.
+
 Respeitar a arquitetura e as tecnologias já existentes no projeto.
 
 Não substituir frameworks, bibliotecas ou padrões arquiteturais existentes
@@ -235,7 +257,7 @@ sem solicitação explícita.
 
 ---
 
-## 13. Processo de desenvolvimento
+## 14. Processo de desenvolvimento
 
 Antes de implementar uma funcionalidade:
 
@@ -254,7 +276,7 @@ sinalizar o conflito antes de tomar uma decisão estrutural.
 
 ---
 
-## 14. Documentação
+## 15. Documentação
 
 Os arquivos em /docs representam o contexto funcional e de design do projeto.
 
@@ -265,7 +287,7 @@ Não alterar decisões de produto documentadas sem solicitação explícita.
 
 ---
 
-## 15. Regra fundamental
+## 16. Regra fundamental
 
 O objetivo do protótipo não é implementar todas as funcionalidades
 concebidas durante a pesquisa.

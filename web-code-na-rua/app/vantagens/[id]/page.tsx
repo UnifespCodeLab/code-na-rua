@@ -7,7 +7,7 @@ async function DetalhesParceiro({ params }: { params: Promise<{ id: string }> })
   const { id } = await params;
   if (!/^(0|[1-9]\d*)$/.test(id)) notFound();
 
-  const apiURL = process.env.API_URL;
+  const apiURL = process.env.API_URL ?? 'http://localhost:3333';
   if (!apiURL) throw new Error("Configure API_URL");
 
   const response = await fetch(`${apiURL}/vantagens/${id}`, { cache: "no-store" });

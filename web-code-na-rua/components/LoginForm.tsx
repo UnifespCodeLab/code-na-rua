@@ -1,0 +1,98 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import {
+  EyeIcon,
+  EyeOffIcon,
+  LockIcon,
+  UserIcon,
+} from "@/components/icons/navigation-icons";
+
+export default function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    // por enquanto, apenas previne o envio do formulário e leva para a rota /home
+    event.preventDefault();
+    router.push("/home");
+  }
+
+  return (
+    <form className="mt-5 grid gap-4" onSubmit={handleSubmit}>
+      <div>
+        <label
+          className="mb-1.5 block text-sm font-semibold text-zinc-800"
+          htmlFor="identifier"
+        >
+          E-mail ou CPF
+        </label>
+        <div className="flex min-h-14 items-center rounded-2xl border-2 border-zinc-200 bg-white px-4 shadow-sm transition focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-600/15">
+          <UserIcon className="size-6 shrink-0 text-zinc-900" />
+          <span className="mx-3 h-8 w-px bg-zinc-300" aria-hidden="true" />
+          <input
+            className="min-w-0 flex-1 bg-transparent py-3 text-base text-zinc-950 outline-none placeholder:text-slate-500"
+            id="identifier"
+            name="identifier"
+            type="text"
+            inputMode="email"
+            autoComplete="username"
+            placeholder="Digite seu e-mail ou CPF"
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          className="mb-1.5 block text-sm font-semibold text-zinc-800"
+          htmlFor="password"
+        >
+          Senha
+        </label>
+        <div className="flex min-h-14 items-center rounded-2xl border-2 border-zinc-200 bg-white px-4 shadow-sm transition focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-600/15">
+          <LockIcon className="size-6 shrink-0 text-zinc-900" />
+          <span className="mx-3 h-8 w-px bg-zinc-300" aria-hidden="true" />
+          <input
+            className="min-w-0 flex-1 bg-transparent py-3 text-base text-zinc-950 outline-none placeholder:text-slate-500"
+            id="password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            autoComplete="current-password"
+            placeholder="Digite sua senha"
+            required
+          />
+          <button
+            className="ml-2 grid size-11 shrink-0 cursor-pointer place-items-center rounded-xl text-zinc-700 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            type="button"
+            onClick={() => setShowPassword((visible) => !visible)}
+            aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+            aria-pressed={showPassword}
+          >
+            {showPassword ? (
+              <EyeOffIcon className="size-6" />
+            ) : (
+              <EyeIcon className="size-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      <button
+        className="mt-1 min-h-14 cursor-pointer rounded-2xl bg-[#ffdd00] px-6 text-lg font-extrabold text-zinc-950 shadow-[0_5px_12px_rgb(0_0_0/18%)] transition hover:bg-yellow-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950 active:translate-y-0.5 active:shadow-sm"
+        type="submit"
+      >
+        Entrar
+      </button>
+
+      <Link
+        className="grid min-h-14 place-items-center rounded-2xl border-2 border-blue-600 bg-white px-6 text-lg font-bold text-blue-700 transition hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 active:translate-y-0.5"
+        href="/cadastro"
+      >
+        Criar conta
+      </Link>
+    </form>
+  );
+}
