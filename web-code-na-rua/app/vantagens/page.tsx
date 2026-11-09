@@ -1,12 +1,13 @@
 import Link from "next/link";
 import ParceiroCard from "./_components/parceiro-card";
 import type { Parceiro } from "./types";
+import { apiClient } from "@/libs/api";
 
 export default async function VantagensPage() {
   const parceiros = await buscarParceiros();
 
   async function buscarParceiros(): Promise<Parceiro[]> {
-    const apiURL = process.env.API_URL;
+    const apiURL = process.env.API_URL ?? 'http://localhost:3333';
     if (!apiURL) throw new Error("Configure API_URL");
 
     const response = await fetch(`${apiURL}/vantagens`, { cache: "no-store" });
