@@ -48,7 +48,7 @@ export default function Footer() {
           <FooterButton
             icon={<StarIcon className="size-8" />}
             label="Avaliações"
-            route="/avaliacoes"
+            route="/estabelecimentos"
           />
           <FooterButton
             icon={<BadgePercentIcon className="size-8" />}
