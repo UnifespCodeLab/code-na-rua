@@ -15,13 +15,13 @@ export default function AuthPageTemplate({
       share="splash-login"
       default="none"
     >
-      <main className="relative isolate mx-auto h-svh min-h-[568px] w-[min(100%,calc(100svh*9/16),480px)] overflow-y-auto overflow-x-hidden bg-white text-zinc-950 shadow-[0_0_64px_rgb(0_0_0/45%)] [container-type:inline-size]">
+      <main className="relative isolate mx-auto h-svh min-h-[568px] w-full max-w-[min(calc(100svh*9/16),480px)] overflow-y-auto overflow-x-hidden bg-white text-zinc-950 shadow-[0_0_64px_rgb(0_0_0/45%)] [container-type:inline-size]">
         <div
           className="pointer-events-none absolute -top-[32cqw] -left-[90cqw] h-[72cqw] w-[120cqw] -rotate-12 rounded-[70%] bg-[#ffdd00]"
           aria-hidden="true"
         />
 
-        <div className="relative z-1 flex min-h-full flex-col px-5 pt-[clamp(28px,6svh,986px)]">
+        <div className="relative z-1 flex min-h-full min-w-0 max-w-full flex-col px-4 pt-[clamp(28px,6svh,986px)] min-[390px]:px-5">
           <header className="text-center">
             <Image
               className="mx-auto h-auto w-[clamp(88px,25cqw,120px)]"
@@ -44,7 +44,7 @@ export default function AuthPageTemplate({
             </p>
           </header>
 
-          <section className="relative z-2 mt-[clamp(8px,2svh,18px)]">
+          <section className="relative z-2 mt-[clamp(8px,2svh,18px)] min-w-0 max-w-full">
             <p className="mt-2 text-[clamp(18px,5cqw,24px)] font-semibold text-slate-500">
               {prompt}
             </p>
